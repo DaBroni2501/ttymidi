@@ -78,9 +78,16 @@ this case).  This is described in more details in the table below:
 	0xC0-0xC0   Program # (0-127)         Not Used (send 0)         Program Change
 	0xD0-0xD0   Pressure Value (0-127)    Not Used (send 0)         Mono Key Pressure (Channel Pressure)
 	0xE0-0xE0   Range LSB (0-127)         Range MSB (0-127)         Pitch Bend
+	0xF8	    Not Used		      Not Used			MIDI Clock (output only)
+	0xFA	    Not used		      Not used			MIDI Clock Start (output only)  
+	0xFB	    Not used		      Not used			MIDI Clock Continue (output only)
+	0xFC	    Not used		      Not used			MIDI Clock Stop (output only)
 
 	Not implemented:
 	0xF0-0xF0   Manufacturer's ID         Model ID                  System 
 
 Byte #1 is given as COMMAND + CHANNEL.  So, for example, 0xE3 is the Pitch Bend
 command (0xE0) for channel 4 (0x03).
+
+Note : this is a modification of cjbarnes18's version of ttymidi (https://github.com/cjbarnes18/ttymidi)
+I've only added MIDI clock handling so that ttymidi can output clock messages. It won't handle incoming clocks sent through the serial port!
