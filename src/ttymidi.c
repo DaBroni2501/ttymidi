@@ -344,6 +344,30 @@ void write_midi_action_to_serial_port(snd_seq_t* seq_handle)
 				if (!arguments.silent && arguments.verbose) 
 					printf("Alsa    0x%x Pitch bend         %03u %5d\n", bytes[0]&0xF0, bytes[0]&0xF, ev->data.control.value);
 				break;
+			
+			case SND_SEQ_EVENT_CLOCK:
+				bytes[0] = 0xF8;
+				if (!arguments.silent && arguments.verbose) 
+					printf("Alsa    Clock");
+				break;
+			
+			case SND_SEQ_EVENT_START:
+				bytes[0] = 0xFA;
+				if (!arguments.silent && arguments.verbose) 
+					printf("Alsa    Clock start");
+				break;
+				
+			case SND_SEQ_EVENT_CONTINUE:
+				bytes[0] = 0xFB;
+				if (!arguments.silent && arguments.verbose) 
+					printf("Alsa    Clock continue");
+				break;
+				
+			case SND_SEQ_EVENT_STOP:
+				bytes[0] = 0xFC;
+				if (!arguments.silent && arguments.verbose) 
+					printf("Alsa    Clock stop");
+				break;
 
 			default:
 				break;
@@ -365,6 +389,14 @@ void write_midi_action_to_serial_port(snd_seq_t* seq_handle)
       			case SND_SEQ_EVENT_CHANPRESS:
         			write(serial, bytes, 2);
         			break;
+			case SND_SEQ_EVENT_CLOCK:
+			case SND_SEQ_EVENT_START:
+			case SND_SEQ_EVENT_CONTINUE:
+			case SND_SEQ_EVENT_STOP:
+				write(serial, bytes, 1);
+				break;
+			default:
+				break;
     		}
 
 		snd_seq_free_event(ev);
