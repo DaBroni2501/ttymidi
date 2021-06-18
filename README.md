@@ -45,7 +45,7 @@ compatible program.  This is done in the following manner:
 	aconnect -i                       # list available MIDI input clients
 	aconnect -o                       # list available MIDI output clients
 	aconnect 128:0 129:0              # where 128 and 129 are the client numbers for
-                                     	  # ttyMIDI and timidity
+                                      # ttyMIDI and timidity
 
 Further, ttyMIDI creates an ALSA MIDI input port that feeds incoming MIDI events 
 back to the serial port. Before better documentation exists, check the header file of 
@@ -69,18 +69,18 @@ transmitted.  To simplify the decoding process, ttyMIDI does not support
 commands which only have 1 parameter must transmit byte #3 (transmitting a 0 in
 this case).  This is described in more details in the table below:
 
-byte1       byte2                     byte3                     Command name
+	byte1       byte2                     byte3                     Command name
 
-0x80-0x8F   Key # (0-127)             Off Velocity (0-127)      Note OFF
-0x90-0x90   Key # (0-127)             On Velocity (0-127)       Note ON
-0xA0-0xA0   Key # (0-127)             Pressure (0-127)          Poly Key Pressure
-0xB0-0xB0   Control # (0-127)         Control Value (0-127)     Control Change
-0xC0-0xC0   Program # (0-127)         Not Used (send 0)         Program Change
-0xD0-0xD0   Pressure Value (0-127)    Not Used (send 0)         Mono Key Pressure (Channel Pressure)
-0xE0-0xE0   Range LSB (0-127)         Range MSB (0-127)         Pitch Bend
+	0x80-0x8F   Key # (0-127)             Off Velocity (0-127)      Note OFF
+	0x90-0x90   Key # (0-127)             On Velocity (0-127)       Note ON
+	0xA0-0xA0   Key # (0-127)             Pressure (0-127)          Poly Key Pressure
+	0xB0-0xB0   Control # (0-127)         Control Value (0-127)     Control Change
+	0xC0-0xC0   Program # (0-127)         Not Used (send 0)         Program Change
+	0xD0-0xD0   Pressure Value (0-127)    Not Used (send 0)         Mono Key Pressure (Channel Pressure)
+	0xE0-0xE0   Range LSB (0-127)         Range MSB (0-127)         Pitch Bend
 
-Not implemented:
-0xF0-0xF0   Manufacturer's ID         Model ID                  System 
+	Not implemented:
+	0xF0-0xF0   Manufacturer's ID         Model ID                  System 
 
 Byte #1 is given as COMMAND + CHANNEL.  So, for example, 0xE3 is the Pitch Bend
 command (0xE0) for channel 4 (0x03).
