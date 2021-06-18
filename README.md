@@ -8,7 +8,7 @@ The ttyMIDI source code is comprised of a single C file.  To compile it, just
 run the following command:
 
 	make
-	
+
 This program depends on libasound2, so you should have the development headers
 for that installed. In Debian or Ubuntu, you can install it by running:
 
@@ -83,5 +83,4 @@ Not implemented:
 0xF0-0xF0   Manufacturer's ID         Model ID                  System 
 
 Byte #1 is given as COMMAND + CHANNEL.  So, for example, 0xE3 is the Pitch Bend
-command (0xE0) for channel 4 (0x03).  
-
+command (0xE0) for channel 4 (0x03).
