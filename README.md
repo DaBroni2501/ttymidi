@@ -45,7 +45,7 @@ compatible program.  This is done in the following manner:
 	aconnect -i                       # list available MIDI input clients
 	aconnect -o                       # list available MIDI output clients
 	aconnect 128:0 129:0              # where 128 and 129 are the client numbers for
-                                      # ttyMIDI and timidity
+                                     	  # ttyMIDI and timidity
 
 Further, ttyMIDI creates an ALSA MIDI input port that feeds incoming MIDI events 
 back to the serial port. Before better documentation exists, check the header file of 
