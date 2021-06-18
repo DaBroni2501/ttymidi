@@ -348,25 +348,25 @@ void write_midi_action_to_serial_port(snd_seq_t* seq_handle)
 			case SND_SEQ_EVENT_CLOCK:
 				bytes[0] = 0xF8;
 				if (!arguments.silent && arguments.verbose) 
-					printf("Alsa    Clock");
+					printf("Alsa    Clock\n");
 				break;
 			
 			case SND_SEQ_EVENT_START:
 				bytes[0] = 0xFA;
 				if (!arguments.silent && arguments.verbose) 
-					printf("Alsa    Clock start");
+					printf("Alsa    Clock start\n");
 				break;
 				
 			case SND_SEQ_EVENT_CONTINUE:
 				bytes[0] = 0xFB;
 				if (!arguments.silent && arguments.verbose) 
-					printf("Alsa    Clock continue");
+					printf("Alsa    Clock continue\n");
 				break;
 				
 			case SND_SEQ_EVENT_STOP:
 				bytes[0] = 0xFC;
 				if (!arguments.silent && arguments.verbose) 
-					printf("Alsa    Clock stop");
+					printf("Alsa    Clock stop\n");
 				break;
 
 			default:
